@@ -8,6 +8,6 @@ export default defineConfig({
   integrations: [tailwind()],
   output: "server", // Enable SSR
   adapter: vercel({
-    analytics: true, // Enable Vercel Analytics
+    webAnalytics: { enabled: false }, // Fixed type: use object instead of boolean
   }),
 });
