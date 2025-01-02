@@ -1,0 +1,73 @@
+---
+const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL;
+const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+
+// Verify the environment variables are loaded
+if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
+  throw new Error('Missing Supabase environment variables');
+}
+---
+
+<form id="paste-form" class="w-full max-w-3xl mx-auto p-4">
+  <textarea
+    id="content"
+    name="content"
+    class="w-full h-96 p-4 bg-gray-800 text-white rounded-lg border border-gray-700 focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+    placeholder="Paste your content here..."
+  ></textarea>
+  <button
+    type="submit"
+    class="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
+    title="Create Paste"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+    </svg>
+  </button>
+</form>
+
+<script define:vars={{ SUPABASE_URL, SUPABASE_ANON_KEY }}>
+const createPaste = async (content) => {
+  const response = await fetch(`${SUPABASE_URL}/rest/v1/pastes`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'apikey': SUPABASE_ANON_KEY,
+      'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+      'Prefer': 'return=representation'  // Changed from return=minimal to return=representation
+    },
+    body: JSON.stringify({ 
+      content,
+      created_at: new Date().toISOString() 
+    })
+  });
+
+  if (!response.ok) {
+    const text = await response.text();
+    console.error('Response status:', response.status);
+    console.error('Response headers:', Object.fromEntries(response.headers));
+    console.error('Response body:', text);
+    throw new Error(`Failed to create paste: ${response.status}`);
+  }
+
+  const data = await response.json();
+  return data[0]; // Supabase returns an array with the created record
+};
+
+document.getElementById('paste-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const content = document.getElementById('content').value;
+
+  try {
+    const paste = await createPaste(content);
+    if (paste?.id) {
+      window.location.href = `/paste/${paste.id}`;
+    } else {
+      throw new Error('No paste data returned');
+    }
+  } catch (error) {
+    console.error('Error creating paste:', error);
+    alert(`Failed to create paste: ${error.message}`);
+  }
+});
+</script>
