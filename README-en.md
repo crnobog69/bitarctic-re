@@ -61,7 +61,8 @@ grant all on pastes to anon;
 grant usage on all sequences in schema public to anon;
 ```
 
-The `drop policy` section is not mandatory; it is only required if the user made a mistake.
+> [!NOTE]
+> The `drop policy` section is not mandatory; it is only required if the user made a mistake.
 
 6. Create a Vercel account (using your [`Github`](https://github.com/) or [`Gitlab`](https://gitlab.com/) account).
 7. Select your repository and click `Import`.
