@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/custom.css';
+---
+
+<Layout title="О - БитАрктик:re">
+  <main class="container mx-auto flex items-start justify-center px-4 max-w-7xl pt-8 pb-8">
+    <div class="w-full">
+      <div class="flex justify-center mb-8">
+        <img 
+          src="https://vzbsygkonwqvfrqkphuh.supabase.co/storage/v1/object/public/bitarctic/bitarctic.png" 
+          alt="BitArctic Logo" 
+          class="logo-arctic -mt-8"
+        />
+      </div>
+      
+      <div class="space-y-6 text-gray-300 text-base max-w-4xl mx-auto">
+        <p class="text-xl text-center">
+          <span style="font-weight: bold;">БитАрктик:re</span> је једноставан <span style="font-weight: bold">pastebin</span> сервис направљен за дељење текста и кода. Наследник БитАрктик-а.
+        </p>
+          
+        <div>
+          <h2 class="text-2xl font-bold mb-6 text-white text-center">Технологије</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
+            <a href="https://astro.build" target="_blank" rel="noopener noreferrer" class="group">
+              <div class="bg-gray-800/80 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 
+                transition-all duration-300 ease-out hover:bg-gray-800/90 hover:-translate-y-1 
+                hover:scale-105 hover:shadow-xl hover:shadow-gray-900/50 
+                group-hover:ring-2 group-hover:ring-white/20 relative overflow-hidden">
+                <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div class="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 
+                    bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+                </div>
+                <div class="h-16 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                  <svg class="h-12 w-12" viewBox="0 0 256 366" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#fff" d="M182.022 9.147c2.982 3.702 4.502 8.697 7.543 18.687L256 246.074a276.467 276.467 0 0 0-79.426-26.891L133.318 73.008a5.63 5.63 0 0 0-10.802.017L79.784 219.11A276.453 276.453 0 0 0 0 246.04L66.76 27.783c3.051-9.972 4.577-14.959 7.559-18.654a24.541 24.541 0 0 1 9.946-7.358C88.67 0 93.885 0 104.314 0h47.683c10.443 0 15.664 0 20.074 1.774a24.545 24.545 0 0 1 9.95 7.373Z"/>
+                    <path fill="#FF5D01" d="M189.972 256.46c-10.952 9.364-32.812 15.751-57.992 15.751-30.904 0-56.807-9.621-63.68-22.56-2.458 7.415-3.009 15.903-3.009 21.324 0 0-1.619 26.623 16.898 45.14 0-9.615 7.795-17.41 17.41-17.41 16.48 0 16.46 14.378 16.446 26.043l-.001 1.041c0 17.705 10.82 32.883 26.21 39.28a35.685 35.685 0 0 1-3.588-15.647c0-16.886 9.913-23.173 21.435-30.48 9.167-5.814 19.353-12.274 26.372-25.232a47.588 47.588 0 0 0 5.742-22.735c0-5.06-.786-9.938-2.243-14.516Z"/>
+                  </svg>
+                </div>
+                <p class="text-center mt-3 text-gray-200 font-medium transition-colors duration-300 group-hover:text-white">Astro</p>
+              </div>
+            </a>
+
+            <a href="https://tailwindcss.com" target="_blank" rel="noopener noreferrer" class="group">
+              <div class="bg-gray-800/80 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 
+                transition-all duration-300 ease-out hover:bg-gray-800/90 hover:-translate-y-1 
+                hover:scale-105 hover:shadow-xl hover:shadow-gray-900/50 
+                group-hover:ring-2 group-hover:ring-white/20 relative overflow-hidden">
+                <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div class="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 
+                    bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+                </div>
+                <div class="h-16 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                  <svg class="h-12 w-12" viewBox="0 0 256 154" xmlns="http://www.w3.org/2000/svg">
+                    <path class="text-[#0ED7B5]" fill="currentColor" d="M128 0C93.867 0 72.533 17.067 64 51.2 76.8 34.133 91.733 27.733 108.8 32c9.737 2.434 16.697 9.499 24.401 17.318C145.751 62.057 160.275 76.8 192 76.8c34.133 0 55.467-17.067 64-51.2-12.8 17.067-27.733 23.467-44.8 19.2-9.737-2.434-16.697-9.499-24.401-17.318C174.249 14.743 159.725 0 128 0ZM64 76.8C29.867 76.8 8.533 93.867 0 128c12.8-17.067 27.733-23.467 44.8-19.2 9.737 2.434 16.697 9.499 24.401 17.318C81.751 138.857 96.275 153.6 128 153.6c34.133 0 55.467-17.067 64-51.2-12.8 17.067-27.733 23.467-44.8 19.2-9.737-2.434-16.697-9.499-24.401-17.318C110.249 91.543 95.725 76.8 64 76.8Z"/>
+                  </svg>
+                </div>
+                <p class="text-center mt-3 text-gray-200 font-medium transition-colors duration-300 group-hover:text-white">Tailwind</p>
+              </div>
+            </a>
+
+            <a href="https://supabase.com" target="_blank" rel="noopener noreferrer" class="group">
+              <div class="bg-gray-800/80 backdrop-blur-sm border border-gray-700/50 rounded-xl p-6 
+                transition-all duration-300 ease-out hover:bg-gray-800/90 hover:-translate-y-1 
+                hover:scale-105 hover:shadow-xl hover:shadow-gray-900/50 
+                group-hover:ring-2 group-hover:ring-white/20 relative overflow-hidden">
+                <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div class="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 
+                    bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+                </div>
+                <div class="h-16 flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                  <svg class="h-12 w-12" viewBox="0 0 109 113" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M63.7076 110.284C60.8481 113.885 55.0502 111.912 54.9813 107.314L53.9738 40.0627L99.1935 40.0627C107.384 40.0627 111.952 49.5228 106.859 55.9374L63.7076 110.284Z" fill="url(#paint0_linear)"/>
+                    <path d="M63.7076 110.284C60.8481 113.885 55.0502 111.912 54.9813 107.314L53.9738 40.0627L99.1935 40.0627C107.384 40.0627 111.952 49.5228 106.859 55.9374L63.7076 110.284Z" fill="url(#paint1_linear)" fill-opacity="0.2"/>
+                    <path d="M45.317 2.07103C48.1765 -1.53037 53.9745 0.442937 54.0434 5.041L54.4849 72.2922H9.83113C1.64038 72.2922 -2.92775 62.8321 2.1655 56.4175L45.317 2.07103Z" fill="#3ECF8E"/>
+                    <defs>
+                      <linearGradient id="paint0_linear" x1="53.9738" y1="54.974" x2="94.1635" y2="71.8295" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#249361"/>
+                        <stop offset="1" stop-color="#3ECF8E"/>
+                      </linearGradient>
+                      <linearGradient id="paint1_linear" x1="36.1558" y1="30.578" x2="54.4844" y2="65.0806" gradientUnits="userSpaceOnUse">
+                        <stop/>
+                        <stop offset="1" stop-opacity="0"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+                <p class="text-center mt-3 text-gray-200 font-medium transition-colors duration-300 group-hover:text-white">Supabase</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-6 mb-4">
+        <a 
+          href="https://github.com/crnobog69/bitarctic-re" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-3 px-6 py-3 
+            bg-gray-800/80 backdrop-blur-sm border border-gray-700/50 rounded-xl
+            hover:bg-gray-800/90 transition-all duration-300 group 
+            hover:scale-105 hover:-translate-y-0.5 
+            hover:shadow-xl hover:shadow-gray-900/50
+            group-hover:ring-2 group-hover:ring-white/20 relative overflow-hidden"
+        >
+          <div class="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity">
+            <div class="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 
+              bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+          </div>
+          <svg xmlns="http://www.w3.org/2000/svg" 
+            class="h-5 w-5 transition-transform duration-300 group-hover:rotate-[360deg]" 
+            fill="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+          </svg>
+          <span class="text-lg font-medium text-gray-200 group-hover:text-white transition-colors">Изворни код</span>
+        </a>
+      </div>
+    </div>
+  </main>
+</Layout>

@@ -1,48 +1,69 @@
-# Astro Starter Kit: Basics
+# <p align="center">БитАрктик:re</p>
 
-```sh
-npm create astro@latest -- --template basics
-```
+<div align="center">
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+---
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+[Српски (🇷🇸)](README.md) | [English (🇬🇧)](README-en.md)
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+---
 
-## 🚀 Project Structure
+</div>
 
-Inside of your Astro project, you'll see the following folders and files:
+<div align="center">
+<p>
+<a href="https://github.com/crnobog69/bitarctic-re/stargazers"><img src="https://img.shields.io/github/stars/crnobog69/bitarctic-re?style=for-the-badge&logo=starship&color=C9CBFF&logoColor=C9CBFF&labelColor=302D41" alt="stars"></a>&nbsp;&nbsp;
+<a href="https://github.com/crnobog69/bitarctic-re/"><img src="https://img.shields.io/github/repo-size/crnobog69/bitarctic-re?style=for-the-badge&logo=linux&logoColor=f9e2af&label=Size&labelColor=302D41&color=f9e2af" alt="REPO SIZE"></a>&nbsp;&nbsp;
+<a href="https://github.com/crnobog69/bitarctic-re/commits/main/"><img src="https://img.shields.io/github/last-commit/crnobog69/bitarctic-re?style=for-the-badge&logo=github&logoColor=eba0ac&label=Last%20Commit&labelColor=302D41&color=eba0ac" alt="Last Commit"></a>&nbsp;&nbsp;
+<a href="https://github.com/crnobog69/bitarctic-re/LICENSE"><img src="https://img.shields.io/github/license/crnobog69/bitarctic-re?style=for-the-badge&logo=&color=CBA6F7&logoColor=CBA6F7&labelColor=302D41" alt="LICENSE"></a>&nbsp;&nbsp;
+</p>
+</div>
+
+## Хостовање:
+
+1. Форкујте репозиторијум
+2. Направите [`Supabase`](https://supabase.com/) профил
+3. Копирајте `Project URL` и `anon` `public` кључеве
+4. Можете креирати `.env` датотеку и подесити променљиве овоме
 
 ```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+PUBLIC_SUPABASE_URL=
+PUBLIC_SUPABASE_ANON_KEY=
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+5. У `SQL Editor` на `Supabase` залепите ово:
 
-## 🧞 Commands
+```sql
+-- First, drop existing policies
+drop policy if exists "Enable insert for anonymous users" on pastes;
+drop policy if exists "Enable select for anonymous users" on pastes;
+drop policy if exists "Anyone can create pastes" on pastes;
+drop policy if exists "Anyone can read pastes" on pastes;
 
-All commands are run from the root of the project, from a terminal:
+-- Disable RLS temporarily to ensure clean slate
+alter table pastes disable row level security;
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+-- Enable RLS again
+alter table pastes enable row level security;
 
-## 👀 Want to learn more?
+-- Create policies with explicit permissions
+create policy "Public insert access"
+on pastes for insert
+with check (true);
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+create policy "Public select access"
+on pastes for select
+using (true);
+
+-- Grant necessary permissions to the anon role
+grant usage on schema public to anon;
+grant all on pastes to anon;
+grant usage on all sequences in schema public to anon;
+```
+
+_drop policy_ није потребан, он служи само ако је корисник погрешио.
+
+6. Направите Vercel профил (са вашим [`Github`](https://github.com/) или [`Gitlab`](https://gitlab.com/) профилом)
+7. Изаберите Ваш репозиторијум и кликните на `Import`
+8. Додајте `Environment Variables` и подесите променљиве (или увезите из датотеке `.env`)
+9. `Publish`

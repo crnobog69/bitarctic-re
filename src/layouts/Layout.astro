@@ -4,6 +4,7 @@ interface Props {
 }
 
 const { title = 'БитАрктик:re' } = Astro.props;
+const currentPath = Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -18,8 +19,24 @@ const { title = 'БитАрктик:re' } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="bg-gray-900 text-white min-h-screen">
-    <slot />
+  <body class="bg-gray-900 text-white min-h-screen flex flex-col">
+    <main class="flex-grow">
+      <slot />
+    </main>
+    <footer class="py-4 text-center text-gray-400 flex justify-center items-center gap-2">
+      Made by
+      <a 
+        href="https://crnobog.vercel.app" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="transition-all duration-200"
+      ><span class="hover:font-bold">црнобог</span>
+      </a>
+      <span class="text-gray-600">•</span>
+      <a href="/" class="text-gray-400 hover:text-white transition-colors">Почетна</a>
+      <span class="text-gray-600">•</span>
+      <a href="/about" class="text-gray-400 hover:text-white transition-colors">О сајту</a>
+    </footer>
   </body>
 </html>
 
@@ -32,5 +49,30 @@ const { title = 'БитАрктик:re' } = Astro.props;
   }
   :global(.title-font) {
     font-family: 'Pixelify Sans', system-ui;
+  }
+
+  /* Webkit browsers */
+  ::-webkit-scrollbar {
+    width: 14px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #1F2937;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #4B5563;
+    border: 3px solid #1F2937;
+    border-radius: 8px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #6B7280;
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #4B5563 #1F2937;
   }
 </style>

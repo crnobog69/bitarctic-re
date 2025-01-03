@@ -1,5 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import '../../styles/custom.css';
 
 interface Paste {
   id: string;
@@ -15,7 +16,7 @@ export async function getStaticPaths() {
 
 // Fix the type error by explicitly typing Astro.params
 const { id } = Astro.params as { id: string };
-const shortenedId = id.split('-')[0];
+const shortenedId = id;
 const SUPABASE_URL = import.meta.env.PUBLIC_SUPABASE_URL;
 const SUPABASE_ANON_KEY = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
 
@@ -54,28 +55,30 @@ const formatDate = (date: string) => {
 ---
 
 <Layout>
-  <main class="container mx-auto py-12">
+  <main class="container mx-auto py-6 px-4 sm:py-12">
     <div class="max-w-4xl mx-auto">
-      <div class="flex justify-between items-center mb-6">
+      <div class="flex flex-row justify-between items-center mb-6">
         <div class="flex items-center gap-2">
-          <h1 class="text-3xl font-bold">Ледник: 
+          <h1 class="text-lg sm:text-3xl font-bold flex items-center gap-1">Ледник: 
             <button
               id="copyId"
-              class="inline-flex items-center gap-1.5 text-gray-400 hover:text-gray-300 transition-colors"
-              title="Copy ID"
+              class="inline-flex items-center translate-y-[3px] gap-1 text-gray-400 hover:text-gray-300 transition-colors"
+              title="Копирај ID"
             >
-              <span class="text-base">[id]</span>
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 relative -top-[1px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <span class="text-sm sm:text-base leading-none">[id]</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
               </svg>
             </button>
           </h1>
         </div>
-        <div class="flex gap-3">
+        <div class="flex gap-2 sm:gap-3">
           <button
             id="copyContent"
-            class="p-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors"
+            class="p-3 bg-gray-800/80 backdrop-blur-sm border border-gray-700/50 rounded-lg 
+              hover:bg-gray-800/90 hover:scale-105 transition-all duration-300 
+              hover:shadow-xl hover:shadow-gray-900/50"
             title="Copy Content"
           >
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -83,21 +86,39 @@ const formatDate = (date: string) => {
               <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
             </svg>
           </button>
-          <button
-            id="shareUrl"
-            class="p-3 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors"
-            title="Share URL"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 16 16" fill="none">
-              <path 
-                d="M11 6C12.6569 6 14 4.65685 14 3C14 1.34315 12.6569 0 11 0C9.34315 0 8 1.34315 8 3C8 3.22371 8.02449 3.44169 8.07092 3.65143L4.86861 5.65287C4.35599 5.24423 3.70652 5 3 5C1.34315 5 0 6.34315 0 8C0 9.65685 1.34315 11 3 11C3.70652 11 4.35599 10.7558 4.86861 10.3471L8.07092 12.3486C8.02449 12.5583 8 12.7763 8 13C8 14.6569 9.34315 16 11 16C12.6569 16 14 14.6569 14 13C14 11.3431 12.6569 10 11 10C10.2935 10 9.644 10.2442 9.13139 10.6529L5.92908 8.65143C5.97551 8.44169 6 8.22371 6 8C6 7.77629 5.97551 7.55831 5.92908 7.34857L9.13139 5.34713C9.644 5.75577 10.2935 6 11 6Z" 
-                fill="currentColor"
-              />
-            </svg>
-          </button>
+          <div class="relative group">
+            <button
+              id="shareUrl"
+              class="p-3 bg-gray-800/80 backdrop-blur-sm border border-gray-700/50 rounded-lg 
+                hover:bg-gray-800/90 hover:scale-105 transition-all duration-300 
+                hover:shadow-xl hover:shadow-gray-900/50 flex items-center gap-2"
+              title="Share URL"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+              </svg>
+            </button>
+            <div class="absolute right-0 mt-2 w-48 bg-gray-800/90 backdrop-blur-sm border border-gray-700/50 
+              rounded-lg shadow-lg invisible group-hover:visible opacity-0 group-hover:opacity-100 
+              transition-all z-50">
+              <div class="p-2 space-y-2">
+                <button
+                  id="copyUrlBtn"
+                  class="w-full text-left px-4 py-2 text-sm hover:bg-gray-700 rounded flex items-center gap-2"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                  </svg>
+                  Копирај везу
+                </button>
+              </div>
+            </div>
+          </div>
           <a
             href="/"
-            class="p-3 bg-blue-600 hover:bg-blue-700 rounded-lg transition-colors"
+            class="p-3 bg-gray-800/80 backdrop-blur-sm border border-gray-700/50 rounded-lg 
+              hover:bg-gray-800/90 hover:scale-105 transition-all duration-300 
+              hover:shadow-xl hover:shadow-gray-900/50"
             title="New Paste"
           >
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -106,7 +127,7 @@ const formatDate = (date: string) => {
           </a>
         </div>
       </div>
-      <div class="bg-gray-800 rounded-lg p-6">
+      <div class="bg-gray-800/80 backdrop-blur-sm border border-gray-700/50 rounded-lg p-6">
         <pre class="whitespace-pre-wrap break-words text-lg"><code id="pasteContent">{paste.content}</code></pre>
       </div>
       <div class="mt-6 text-gray-400 text-lg">
@@ -121,7 +142,7 @@ const formatDate = (date: string) => {
 function showCopyFeedback(button: Element, originalHTML: string) {
   if (button instanceof HTMLElement) {
     button.innerHTML = `
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <polyline points="20 6 9 17 4 12"></polyline>
       </svg>
     `;
@@ -146,13 +167,21 @@ document.getElementById('copyContent')?.addEventListener('click', async () => {
 });
 
 // Share URL
-document.getElementById('shareUrl')?.addEventListener('click', async () => {
-  const button = document.getElementById('shareUrl');
-  if (!button) return;
-
+document.getElementById('copyUrlBtn')?.addEventListener('click', async () => {
   try {
     await navigator.clipboard.writeText(window.location.href);
-    showCopyFeedback(button, button.innerHTML);
+    const button = document.getElementById('copyUrlBtn');
+    if (!button) return;
+    const originalHTML = button.innerHTML;
+    button.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+      </svg>
+      Копирано!
+    `;
+    setTimeout(() => {
+      button.innerHTML = originalHTML;
+    }, 2000);
   } catch (err) {
     console.error('Failed to copy URL:', err);
   }
@@ -167,8 +196,8 @@ document.getElementById('copyId')?.addEventListener('click', async () => {
     await navigator.clipboard.writeText(window.location.pathname.split('/').pop() || '');
     const originalHTML = button.innerHTML;
     button.innerHTML = `
-      <span class="text-sm">[id!]</span>
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 relative -top-[1px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <span class="text-sm sm:text-base leading-none">[id]</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <polyline points="20 6 9 17 4 12"></polyline>
       </svg>
     `;
@@ -176,7 +205,7 @@ document.getElementById('copyId')?.addEventListener('click', async () => {
       button.innerHTML = originalHTML;
     }, 2000);
   } catch (err) {
-    console.error('Failed to copy ID:', err);
+    console.error('Копирање ID није успело:', err);
   }
 });
 </script>

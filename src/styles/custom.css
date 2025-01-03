@@ -1,0 +1,37 @@
+.logo-arctic {
+  filter: drop-shadow(0 0 15px rgba(44, 169, 188, 0.3));
+  transition: all 0.3s ease;
+}
+
+.logo-arctic:hover {
+  filter: drop-shadow(0 0 25px rgba(44, 169, 188, 0.5));
+  transform: scale(1.05) rotate(-2deg);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    rgba(44, 169, 188, 0.2),
+    rgba(44, 169, 188, 0.1)
+  );
+  z-index: -1;
+  animation: gradientAnimation 10s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
