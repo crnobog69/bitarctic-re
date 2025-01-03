@@ -61,9 +61,10 @@ grant all on pastes to anon;
 grant usage on all sequences in schema public to anon;
 ```
 
-> [!NOTE] > _drop policy_ није потребан, он служи само ако је корисник погрешио.
+> [!NOTE]
+> _drop policy_ није потребан, он служи само ако је корисник погрешио.
 
 6. Направите Vercel профил (са вашим [`Github`](https://github.com/) или [`Gitlab`](https://gitlab.com/) профилом)
 7. Изаберите Ваш репозиторијум и кликните на `Import`
 8. Додајте `Environment Variables` и подесите променљиве (или увезите из датотеке `.env`)
-9. `Publish`
+9. Кликните `Publish`.
