@@ -12,10 +12,10 @@
 
 <div align="center">
 <p>
-<a href="https://github.com/crnobog69/bitarctic-re/stargazers"><img src="https://img.shields.io/github/stars/crnobog69/bitarctic-re?style=for-the-badge&logo=starship&color=C9CBFF&logoColor=C9CBFF&labelColor=302D41" alt="stars"></a>&nbsp;&nbsp;
-<a href="https://github.com/crnobog69/bitarctic-re/"><img src="https://img.shields.io/github/repo-size/crnobog69/bitarctic-re?style=for-the-badge&logo=linux&logoColor=f9e2af&label=Size&labelColor=302D41&color=f9e2af" alt="REPO SIZE"></a>&nbsp;&nbsp;
-<a href="https://github.com/crnobog69/bitarctic-re/commits/main/"><img src="https://img.shields.io/github/last-commit/crnobog69/bitarctic-re?style=for-the-badge&logo=github&logoColor=eba0ac&label=Last%20Commit&labelColor=302D41&color=eba0ac" alt="Last Commit"></a>&nbsp;&nbsp;
-<a href="https://github.com/crnobog69/bitarctic-re/LICENSE"><img src="https://img.shields.io/github/license/crnobog69/bitarctic-re?style=for-the-badge&logo=&color=CBA6F7&logoColor=CBA6F7&labelColor=302D41" alt="LICENSE"></a>&nbsp;&nbsp;
+<a href="https://github.com/crnobog69/bitarctic/stargazers"><img src="https://img.shields.io/github/stars/crnobog69/bitarctic?style=for-the-badge&logo=starship&color=C9CBFF&logoColor=C9CBFF&labelColor=302D41" alt="stars"></a>&nbsp;&nbsp;
+<a href="https://github.com/crnobog69/bitarctic/"><img src="https://img.shields.io/github/repo-size/crnobog69/bitarctic?style=for-the-badge&logo=linux&logoColor=f9e2af&label=Size&labelColor=302D41&color=f9e2af" alt="REPO SIZE"></a>&nbsp;&nbsp;
+<a href="https://github.com/crnobog69/bitarctic/commits/main/"><img src="https://img.shields.io/github/last-commit/crnobog69/bitarctic?style=for-the-badge&logo=github&logoColor=eba0ac&label=Last%20Commit&labelColor=302D41&color=eba0ac" alt="Last Commit"></a>&nbsp;&nbsp;
+<a href="https://github.com/crnobog69/bitarctic/LICENSE"><img src="https://img.shields.io/github/license/crnobog69/bitarctic?style=for-the-badge&logo=&color=CBA6F7&logoColor=CBA6F7&labelColor=302D41" alt="LICENSE"></a>&nbsp;&nbsp;
 </p>
 </div>
 
@@ -61,8 +61,7 @@ grant all on pastes to anon;
 grant usage on all sequences in schema public to anon;
 ```
 
-> [!NOTE]
-> _drop policy_ није потребан, он служи само ако је корисник погрешио.
+> [!NOTE] > _drop policy_ није потребан, он служи само ако је корисник погрешио.
 
 6. Направите Vercel профил (са вашим [`Github`](https://github.com/) или [`Gitlab`](https://gitlab.com/) профилом)
 7. Изаберите Ваш репозиторијум и кликните на `Import`
