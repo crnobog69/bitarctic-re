@@ -61,7 +61,8 @@ grant all on pastes to anon;
 grant usage on all sequences in schema public to anon;
 ```
 
-> [!NOTE] > _drop policy_ није потребан, он служи само ако је корисник погрешио.
+> [!NOTE]
+> _drop policy_ није потребан, он служи само ако је корисник погрешио.
 
 6. Направите Vercel профил (са вашим [`Github`](https://github.com/) или [`Gitlab`](https://gitlab.com/) налогом)
 7. Изаберите Ваш репозиторијум и кликните на `Import`
